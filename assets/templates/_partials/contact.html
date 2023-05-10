@@ -1,0 +1,46 @@
+<section id="contact">
+    <div class="container">
+        <h2 class="text-uppercase text-center text-secondary mb-0">Me contacter</h2>
+        <hr class="star-dark mb-5">
+
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <strong>{{ message }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <form hx-post="{{ url_for('index_url') }}" hx-target="body">
+                    {{ form.csrf_token }}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                {{ form.name.label(class_="form-label text-uppercase") }}
+                                {{ form.name }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                {{ form.email.label(class_="form-label text-uppercase") }}
+                                {{ form.email }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        {{ form.message.label(class_="form-label text-uppercase") }}
+                        {{ form.message }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.submit(class_="btn btn-primary") }}
+                    </div>
+                </form> 
+            </div>
+        </div>
+    </div>
+</section>

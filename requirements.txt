@@ -1,0 +1,7 @@
+email-validator
+Flask
+Flask-Admin
+Flask-SQLAlchemy
+Flask-WTF
+Pillow
+

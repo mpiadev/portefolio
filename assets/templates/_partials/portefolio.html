@@ -1,0 +1,50 @@
+<section id="portfolio" class="portfolio">
+    <div class="container">
+        <h2 class="text-uppercase text-center text-secondary">Portfolio</h2>
+        <hr class="star-dark mb-5">
+        <div class="row">
+            {% for project in projects %}
+                <div class="col-md-6 col-lg-4">
+                    <a class="d-block mx-auto portfolio-item" href="#project_{{ project.id }}" data-bs-toggle="modal">
+                        <div class="d-flex portfolio-item-caption position-absolute h-100 w-100">
+                            <div class="text-center text-white my-auto portfolio-item-caption-content w-100">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img class="img-fluid" src="{{ project.image }}">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+{% for project in projects %}
+    <div class="modal text-center" role="dialog" tabindex="-1" id="project_{{ project.id }}">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col-lg-8 mx-auto">
+                                <h2 class="text-uppercase text-secondary mb-0">{{ project.name }}</h2>
+                                <hr class="star-dark mb-5">
+                                <img class="img-fluid mb-5" src="{{ project.image }}">
+                                <p class="mb-5">{{ project.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer pb-5">
+                    <a class="btn btn-primary btn-lg mx-auto rounded-pill portfolio-modal-dismiss" role="button" data-bs-dismiss="modal">
+                        Fermer&nbsp;&nbsp;<i class="fa fa-close"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
